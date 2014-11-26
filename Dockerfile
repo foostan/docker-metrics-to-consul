@@ -9,6 +9,7 @@ RUN curl -L http://toolbelt.treasuredata.com/sh/install-ubuntu-trusty-td-agent2.
 RUN td-agent-gem install fluent-plugin-docker-metrics -v 0.0.2
 RUN td-agent-gem install fluent-plugin-consul -v 0.0.2
 
-ADD config.rb /config.rb
+ADD td-agent.conf.rb /etc/td-agent/
+ADD out_convert.rb /etc/td-agent/plugin/
 
-CMD td-agent -c config.rb
+CMD td-agent -c /etc/td-agent/td-agent.conf.rb
